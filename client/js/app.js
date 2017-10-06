@@ -6,13 +6,13 @@ import { ColorTool } from './components/color-tool';
 
 const myCars = [
   { id: 1, make: 'Chevy', model: 'Cavalier', year: 1981, color: 'brown', price: 100 },
-  { id: 1, make: 'Lincoln', model: 'Futura', year: 1955, color: 'black', price: NaN }
+  { id: 2, make: 'Lincoln', model: 'Futura', year: 1955, color: 'black', price: 10000000 }
 ];
 
 const myColors = [
   { id: 1, name: 'red', hexCode: '#ff0000' },
-  { id: 1, name: 'white', hexCode: '#ff0000' },
-  { id: 1, name: 'blue', hexCode: '#ff0000' }
+  { id: 2, name: 'white', hexCode: '#ff0000' },
+  { id: 3, name: 'blue', hexCode: '#ff0000' }
 ];
 
 
