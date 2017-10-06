@@ -6,8 +6,11 @@ import * as React from 'react';
 export class ColorTool extends React.Component {
 
   // produces a react h1 html element and renders it to the screen with content 'Color Tool'
+  // this is not HTML or a string of HTML
+  // do not think of this as a string of HTML
+  // it is xml-compliant code that will get converted to React.createElement...
   render() {
-    return React.createElement('h1', null, 'Color Tool');
+    return <h1>Color Tool</h1>;
   }
 
 }
