@@ -6,12 +6,14 @@ export class ColorTool extends React.Component {
 
     const colors = ['red', 'white', 'blue'];
 
-    const colorListItems = [];
-
     // function called for each element of the list
     // {} syntax allows for javascript expressions inside the jsx
-    colors.forEach(function (color) {
-      colorListItems.push(<li>{color}</li>)
+    // map is a transformation function; 
+    //   takes original array, 
+    //   performs the function operation on each element, 
+    //   and returns the new array
+    const colorListItems = colors.map(function (color) {
+      return <li>{color}</li>
     });
     return <div>
       <header>
