@@ -10,7 +10,16 @@ export class ColorTool extends React.Component {
   // do not think of this as a string of HTML
   // it is xml-compliant code that will get converted to React.createElement...
   render() {
-    return <h1>Color Tool</h1>;
+    return <div>
+      <header>
+        <h1>Color Tool</h1>
+      </header>
+      <ul>
+        <li>red</li>
+        <li>white</li>
+        <li>blue</li>
+      </ul>
+    </div>;
   }
 
 }
