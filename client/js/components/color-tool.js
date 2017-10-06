@@ -12,9 +12,9 @@ export class ColorTool extends React.Component {
     //   takes original array, 
     //   performs the function operation on each element, 
     //   and returns the new array
-    const colorListItems = colors.map(function (color) {
-      return <li>{color}</li>
-    });
+    const colorListItems = colors.map(
+      color => <li>{color}</li>
+    );
     return <div>
       <header>
         <h1>Color Tool</h1>
@@ -22,7 +22,7 @@ export class ColorTool extends React.Component {
       <ul>
         {colorListItems}
       </ul>
-    </div>;
+    </div >;
   }
 
 }
