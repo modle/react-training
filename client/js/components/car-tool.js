@@ -6,7 +6,7 @@ export class CarTool extends React.Component {
 
     return <div>
       <header>
-        <h1>Color Tool</h1>
+        <h1>Car Tool</h1>
       </header>
       <table border="1px">
         <thead>
