@@ -5,7 +5,7 @@ export class CarTool extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      newId: 0,
+      cars: props.cars.concat(),
       newMake: '',
       newModel: '',
       newColor: '',
@@ -15,12 +15,28 @@ export class CarTool extends React.Component {
 
   onChange = (e) => {
     this.setState({
-      [e.target.id]: e.target.value,
-      [e.target.make]: e.target.value,
-      [e.target.model]: e.target.value,
-      [e.target.color]: e.target.value,
+      [e.target.name]: e.target.value,
     });
   }
+
+  onClick = () => {
+    const nextId = Math.max(...this.state.cars.map(c => c.id)) + 1;
+    const car = {
+      id: nextId,
+      make: this.state.newCarMake,
+      model: this.state.newCarModel,
+      color: this.state.newCarColor,
+    };
+
+    // add objects immutably; create a new array with concat
+    this.setState({
+      cars: this.state.cars.concat(car),
+      newCarMake: '',
+      newCarModel: '',
+      newCarColor: '',
+    });
+  }
+
 
   render() {
 
@@ -39,7 +55,7 @@ export class CarTool extends React.Component {
         </thead>
         <tbody>
           {
-            this.props.cars.map(
+            this.state.cars.map(
               car => <tr key={car.id}>
                 <td>{car.id}</td>
                 <td>{car.make}</td>
@@ -50,12 +66,9 @@ export class CarTool extends React.Component {
           }
         </tbody>
       </table >
+      <br />
+      <br />
       <form>
-        <div>
-          <label htmlFor="new-car-id-input">Id:</label>
-          <input type="text" id="new-car-id-input" name="newCarId"
-            value={this.state.newCarId} onChange={this.onChange} />
-        </div >
         <div>
           <label htmlFor="new-car-make-input">Make:</label>
           <input type="text" id="new-car-make-input" name="newCarMake"
@@ -71,6 +84,7 @@ export class CarTool extends React.Component {
           <input type="text" id="new-car-color-input" name="newCarColor"
             value={this.state.newCarColor} onChange={this.onChange} />
         </div >
+        <button type="button" onClick={this.onClick}>Add Car</button>
       </form>
 
     </div >;

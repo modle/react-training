@@ -16,5 +16,5 @@ const myColors = [
 ];
 
 
-// ReactDOM.render(<CarTool cars={myCars} />, document.querySelector('lab'));
-// ReactDOM.render(<ColorTool colors={myColors} />, document.querySelector('main'));
+ReactDOM.render(<CarTool cars={myCars} />, document.querySelector('lab'));
+ReactDOM.render(<ColorTool colors={myColors} />, document.querySelector('main'));

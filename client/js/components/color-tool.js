@@ -2,20 +2,40 @@ import * as React from 'react';
 
 export class ColorTool extends React.Component {
 
+  // add colors to the state so they can be mutated
+  // .concat() and .slice() both create a (shallow) copy
+  // JSON.parse(JSON.stringify(props.colors)) will create a ('deep') copy
   constructor(props) {
     super(props);
     this.state = {
+      colors: props.colors.concat(),
       newColorName: '',
       newColorHexCode: '',
     };
-
   }
 
-  // [e.target.name] is a computed property
   onChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
       [e.target.hexCode]: e.target.value,
+    });
+  }
+
+  onClick = () => {
+    // get the next Id
+    const nextId = Math.max(...this.state.colors.map(c => c.id)) + 1;
+    // create the color object from the current state
+    const color = {
+      id: nextId,
+      name: this.state.newColorName,
+      hexCode: this.state.newColorHexCode,
+    };
+
+    // add objects immutably; create a new array with concat
+    this.setState({
+      colors: this.state.colors.concat(color),
+      newColorName: '',
+      newColorHexCode: '',
     });
   }
 
@@ -25,7 +45,7 @@ export class ColorTool extends React.Component {
         <h1>Color Tool</h1>
       </header>
       <ul>
-        {this.props.colors.map(color => <li key={color.id}>{color.name}</li>)}
+        {this.state.colors.map(color => <li key={color.id}>{color.name + ': ' + color.hexCode}</li>)}
       </ul>
       <form>
         <div>
@@ -35,11 +55,11 @@ export class ColorTool extends React.Component {
         </div >
         <div>
           <label htmlFor="new-hex-code-input">New Hex Code:</label>
-          <input type="text" id="new-hex-code-input" name="newHexCode"
-            value={this.state.newHexCode} onChange={this.onChange} />
+          <input type="color" id="new-hex-code-input" name="newColorHexCode"
+            value={this.state.newColorHexCode} onChange={this.onChange} />
         </div >
+        <button type="button" onClick={this.onClick}>Add Color</button>
       </form>
     </div>;
   }
-
 }
