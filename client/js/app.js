@@ -1,16 +1,22 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-// why braces? Preference.
-//   Don't have to put default behind export in component definition
-//   static analysis 'tree-shaking' is made easier by using named imports and exports
-//     it lets you exclude stuff you don't need
-//   using default means you can't be sure what's being exported and not
-//     easier to be explicit with { Component }
-// import { ColorTool } from './components/color-tool';
-import { CarTool } from './components/car-tool';
+// import { CarTool } from './components/car-tool';
 
-// finds the main element and adds the ColorTool element
-// ReactDOM.render(React.createElement(ColorTool), document.querySelector('main'));
+// const myCars = [
+//   { id: 1, make: 'Chevy', model: 'Cavalier', year: 1981, color: 'brown', price: 100 },
+//   { id: 1, make: 'Lincoln', model: 'Futura', year: 1955, color: 'black', price: NaN }
+// ];
 
-ReactDOM.render(React.createElement(CarTool), document.querySelector('lab'));
+// ReactDOM.render(<CarTool cars={myCars} />, document.querySelector('lab'));
+
+
+import { ColorTool } from './components/color-tool';
+
+const myColors = [
+  { id: 1, name: 'red', hexCode: '#ff0000' },
+  { id: 1, name: 'white', hexCode: '#ff0000' },
+  { id: 1, name: 'blue', hexCode: '#ff0000' }
+];
+
+ReactDOM.render(<ColorTool colors={myColors} />, document.querySelector('main'));
