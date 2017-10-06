@@ -4,20 +4,17 @@ export class ColorTool extends React.Component {
 
   render() {
 
-    const colors = ['red', 'white', 'blue'];
-
-    // function called for each element of the list
-    // {} syntax allows for javascript expressions inside the jsx
-    // map is a transformation function; 
-    //   takes original array, 
-    //   performs the function operation on each element, 
-    //   and returns the new array
+    const colors = [
+      { id: 1, name: 'red', hexCode: '#ff0000' },
+      { id: 1, name: 'white', hexCode: '#ff0000' },
+      { id: 1, name: 'blue', hexCode: '#ff0000' }
+    ];
     return <div>
       <header>
         <h1>Color Tool</h1>
       </header>
       <ul>
-        {colors.map(color => <li>{color}</li>)}
+        {colors.map(color => <li>{color.name}</li>)}
       </ul>
     </div >;
   }

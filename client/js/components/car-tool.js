@@ -3,6 +3,11 @@ import * as React from 'react';
 export class CarTool extends React.Component {
 
   render() {
+    const cars = [
+      { id: 1, make: 'Chevy', model: 'Cavalier', year: 1981, color: 'brown', price: 100 },
+      { id: 1, make: 'Lincoln', model: 'Futura', year: 1955, color: 'black', price: NaN }
+    ];
+
     return <div>
       <header>
         <h1>Color Tool</h1>
@@ -19,22 +24,16 @@ export class CarTool extends React.Component {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Chevy</td>
-            <td>Cavalier</td>
-            <td>1981</td>
-            <td>Brown</td>
-            <td>100</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Lincoln</td>
-            <td>Futura</td>
-            <td>1955</td>
-            <td>Black</td>
-            <td>NaN</td>
-          </tr>
+          {
+            cars.map(car => <tr>
+              <td>{car.id}</td>
+              <td>{car.make}</td>
+              <td>{car.model}</td>
+              <td>{car.year}</td>
+              <td>{car.color}</td>
+              <td>{car.price}</td>
+            </tr>)
+          };
         </tbody>
       </table >
     </div >;
