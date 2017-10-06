@@ -7,10 +7,10 @@ import * as ReactDOM from 'react-dom';
 //     it lets you exclude stuff you don't need
 //   using default means you can't be sure what's being exported and not
 //     easier to be explicit with { Component }
-// import { ColorTool } from './components/color-tool';
-import { CarTool } from './components/car-tool';
+import { ColorTool } from './components/color-tool';
+// import { CarTool } from './components/car-tool';
 
 // finds the main element and adds the ColorTool element
-// ReactDOM.render(React.createElement(ColorTool), document.querySelector('main'));
+ReactDOM.render(React.createElement(ColorTool), document.querySelector('main'));
 
-ReactDOM.render(React.createElement(CarTool), document.querySelector('lab'));
+// ReactDOM.render(React.createElement(CarTool), document.querySelector('lab'));

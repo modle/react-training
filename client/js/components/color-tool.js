@@ -1,23 +1,24 @@
 import * as React from 'react';
-// ReactDOM not needed in the component; it is included from app.js
 
-// this is actually a function, not a class in the traditional OOP sense
-// export creates a named export, which allows importing from another js file
 export class ColorTool extends React.Component {
 
-  // produces a react h1 html element and renders it to the screen with content 'Color Tool'
-  // this is not HTML or a string of HTML
-  // do not think of this as a string of HTML
-  // it is xml-compliant code that will get converted to React.createElement...
   render() {
+
+    const colors = ['red', 'white', 'blue'];
+
+    const colorListItems = [];
+
+    // function called for each element of the list
+    // {} syntax allows for javascript expressions inside the jsx
+    colors.forEach(function (color) {
+      colorListItems.push(<li>{color}</li>)
+    });
     return <div>
       <header>
         <h1>Color Tool</h1>
       </header>
       <ul>
-        <li>red</li>
-        <li>white</li>
-        <li>blue</li>
+        {colorListItems}
       </ul>
     </div>;
   }
