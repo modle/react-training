@@ -5,8 +5,8 @@ import { CarTool } from './components/car-tool';
 import { ColorTool } from './components/color-tool';
 
 const myCars = [
-  { id: 1, make: 'Chevy', model: 'Cavalier', year: 1981, color: 'brown', price: 100 },
-  { id: 2, make: 'Lincoln', model: 'Futura', year: 1955, color: 'black', price: 10000000 }
+  { id: 1, make: 'Chevy', model: 'Cavalier', color: 'brown' },
+  { id: 2, make: 'Lincoln', model: 'Futura', color: 'black' }
 ];
 
 const myColors = [
@@ -16,5 +16,5 @@ const myColors = [
 ];
 
 
-ReactDOM.render(<CarTool cars={myCars} />, document.querySelector('lab'));
-ReactDOM.render(<ColorTool colors={myColors} />, document.querySelector('main'));
+// ReactDOM.render(<CarTool cars={myCars} />, document.querySelector('lab'));
+// ReactDOM.render(<ColorTool colors={myColors} />, document.querySelector('main'));

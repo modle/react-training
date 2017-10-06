@@ -9,11 +9,10 @@ export class ColorTool extends React.Component {
       newColorHexCode: '',
     };
 
-    this.onChange = this.onChange.bind(this);
   }
 
   // [e.target.name] is a computed property
-  onChange(e) {
+  onChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
       [e.target.hexCode]: e.target.value,
