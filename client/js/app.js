@@ -5,8 +5,8 @@ import { CarTool } from './components/car-tool';
 import { ColorTool } from './components/color-tool';
 
 const myCars = [
-  { id: 1, make: 'Chevy', model: 'Cavalier', year: 1981, color: 'brown', price: 300},
-  { id: 2, make: 'Lincoln', model: 'Futura', year: 1955, color: 'black', price: 999999 }
+  { id: 1, make: 'Chevy', model: 'Cavalier', year: 1981, color: 'brown', price: 300, edit: false},
+  { id: 2, make: 'Lincoln', model: 'Futura', year: 1955, color: 'black', price: 999999, edit: false }
 ];
 
 const myColors = [

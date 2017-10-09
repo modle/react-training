@@ -15,24 +15,24 @@ export class CarTool extends React.Component {
       newColor: '',
       newPrice: 0,
     };
-
   }
 
   onChange = (e) => {
     this.setState({
       someValue: e.target.value,
     });
-  }
+  };
 
   saveCar = car => {
-    console.log("got here")
-    console.log(car);
-
-    // add objects immutably; create a new array with concat
     this.setState({
       cars: this.state.cars.concat(car),
     });
   }
+
+  editCar = carId => {
+    console.log("edit triggered");
+  };
+  
 
   deleteCar = carId => {
     console.log(carId.value);
@@ -44,14 +44,11 @@ export class CarTool extends React.Component {
     });
   };
 
-  // cars: this.state.cars.slice(0, carToDeleteIndex).concat(this.state.cars.slice(carToDeleteIndex + 1)),
-  // cars: this.state.cars.filter(item => item.id !== carToDeleteIndex),
-  
   render() {
 
     return <div>
       <ToolHeader headerText="Car Tool" />
-      <CarTable cars={this.state.cars} onDeleteCar={this.deleteCar}/>
+      <CarTable cars={this.state.cars} onDeleteCar={this.deleteCar} onEditCar={this.editCar} />
       <br />
       <br />
       <CarForm cars={this.state.cars} onSaveCar={this.saveCar} />

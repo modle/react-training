@@ -20,7 +20,7 @@ export class CarTable extends React.Component {
       <tbody>
         {
           cars.map(
-            car => <CarRow key={car.id} car={car} onDeleteCar={this.props.onDeleteCar} />
+            car => <CarRow key={car.id} car={car} onDeleteCar={this.props.onDeleteCar} onEditCar={this.props.onEditCar} />
           )
         }
         
