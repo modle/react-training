@@ -23,14 +23,14 @@ export class CarTable extends React.Component {
           cars.map(
             car => 
             {
-              if (car.edit) {
+              if (this.props.editCarId === car.id) {
                 return <CarEditRow key={car.id} car={car}
-                  onFlipEditFlag={this.props.onFlipEditFlag}
+                  onCancelCarEdit={this.props.onCancelCarEdit}
                   onSaveEditedCar={this.props.onSaveEditedCar} />;
               } else {
                 return <CarViewRow key={car.id} car={car}
                   onDeleteCar={this.props.onDeleteCar}
-                  onFlipEditFlag={this.props.onFlipEditFlag} />;
+                  onEditCar={this.props.onEditCar} />;
               }
             }
           )

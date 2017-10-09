@@ -9,10 +9,8 @@ export class CarViewRow extends React.Component {
     );
   };
 
-  flipEditFlag = () => {
-    const car = this.props.car;
-    car.edit = !car.edit;
-    this.props.onFlipEditFlag(car);
+  editCar = () => {
+    this.props.onEditCar(this.props.car.id);
   };
 
   render() {
@@ -25,7 +23,7 @@ export class CarViewRow extends React.Component {
       <td>{car.year}</td>
       <td>{car.color}</td>
       <td>{car.price}</td>
-      <button type="button" id="edit" onClick={this.flipEditFlag}>Edit car</button>
+      <button type="button" id="edit" onClick={this.editCar}>Edit car</button>
       <button type="button" id="delete" onClick={this.delete}>Delete car</button>
     </tr>;
   }

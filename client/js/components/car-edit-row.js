@@ -19,16 +19,8 @@ export class CarEditRow extends React.Component {
   }
 
   cancel = () => {
-    const car = this.props.car;
-    car.edit = true;
-    this.props.onFlipEditFlag(car);    
+    this.props.onCancelCarEdit(this.props.car.id);
   }
-
-  flipEditFlag = () => {
-    const car = this.props.car;
-    car.edit = !car.edit;
-    this.props.onFlipEditFlag(car);
-  };
 
   save = () => {
     const car = {
@@ -37,8 +29,7 @@ export class CarEditRow extends React.Component {
       model: this.state.model,
       year: this.state.year,
       color: this.state.color,
-      price: this.state.price,
-      edit: false,
+      price: this.state.price
     };
     this.props.onSaveEditedCar(car);
   }
@@ -75,7 +66,7 @@ export class CarEditRow extends React.Component {
           onChange={this.onChange} />
       </td>
       <button type="button" id="save" onClick={this.save}>Save</button>
-      <button type="button" id="flipEditFlag" onClick={this.flipEditFlag}>Cancel</button>
+      <button type="button" id="flipEditFlag" onClick={this.cancel}>Cancel</button>
     </tr>;
   }
 }
