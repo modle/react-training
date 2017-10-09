@@ -2,6 +2,20 @@ import * as React from 'react';
 
 export class CarRow extends React.Component {
 
+  
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      make: '',
+      model: '',
+      year: 0,
+      color: '',
+      price: 0,
+    };
+
+  }
+
   delete = () => {
     console.log(this.props.car.id);
     this.props.onDeleteCar(
@@ -17,15 +31,17 @@ export class CarRow extends React.Component {
   };
 
   save = () => {
+
     console.log(this.props.car.id);
+    console.log(this.state);
 
     const car = {
       id: this.props.car.id,
-      make: this.props.car.editMake,
-      model: this.props.car.editModel,
-      year: this.props.car.editYear,
-      color: this.props.car.editColor,
-      price: this.props.car.editPrice,
+      make: this.state.make,
+      model: this.state.model,
+      year: this.state.year,
+      color: this.state.color,
+      price: this.state.price,
       edit: false,
     };
     this.props.onSaveEditedCar(car);
@@ -36,7 +52,7 @@ export class CarRow extends React.Component {
       [ e.target.name ]: e.target.value,
     });
   }
-
+    
   render() {
     const car = this.props.car;
 
@@ -44,23 +60,23 @@ export class CarRow extends React.Component {
       return <tr>
         <td>{car.id}</td>
         <td>
-          <input type="text" id="edit-car-make-input" name="editMake"
+          <input type="text" id="edit-car-make-input" name="make"
             defaultValue={car.make} onChange={this.onChange} />
         </td>
         <td>
-          <input type="text" id="edit-car-model-input" name="editModel"
+          <input type="text" id="edit-car-model-input" name="model"
             defaultValue={car.model} onChange={this.onChange} />
         </td>
         <td>
-          <input type="number" id="edit-car-year-input" name="editYear"
+          <input type="number" id="edit-car-year-input" name="year"
             defaultValue={car.year} onChange={this.onChange} />
         </td>
         <td>
-          <input type="text" id="edit-car-color-input" name="editColor"
+          <input type="text" id="edit-car-color-input" name="color"
             defaultValue={car.color} onChange={this.onChange} />
         </td>
         <td>
-          <input type="number" id="edit-car-price-input" name="editPrice"
+          <input type="number" id="edit-car-price-input" name="price"
             defaultValue={car.price} onChange={this.onChange} />
         </td>
         <button type="button" id="save" onClick={this.save}>Save</button>
