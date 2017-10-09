@@ -22,19 +22,12 @@ export class CarTable extends React.Component {
         {
           cars.map(
             car => 
-            {
-              if (this.props.editCarId === car.id) {
-                return <CarEditRow key={car.id} car={car}
-                  onCancelCarEdit={this.props.onCancelCarEdit}
-                  onSaveEditedCar={this.props.onSaveEditedCar} />;
-              } else {
-                return <CarViewRow key={car.id} car={car}
-                  onDeleteCar={this.props.onDeleteCar}
-                  onEditCar={this.props.onEditCar} />;
-              }
+            {return this.props.editCarId === car.id
+              ? <CarEditRow key={car.id} car={car} onCancelCarEdit={this.props.onCancelCarEdit} onSaveEditedCar={this.props.onSaveEditedCar} />
+              : <CarViewRow key={car.id} car={car} onDeleteCar={this.props.onDeleteCar} onEditCar={this.props.onEditCar} />
             }
           )
-        }        
+        }
       </tbody>
     </table>;
   }
