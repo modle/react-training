@@ -18,10 +18,6 @@ export class CarEditRow extends React.Component {
 
   }
 
-  cancel = () => {
-    this.props.onCancelCarEdit(this.props.car.id);
-  }
-
   save = () => {
     const car = {
       id: this.state.id,
@@ -66,7 +62,7 @@ export class CarEditRow extends React.Component {
           onChange={this.onChange} />
       </td>
       <button type="button" id="save" onClick={this.save}>Save</button>
-      <button type="button" id="flipEditFlag" onClick={this.cancel}>Cancel</button>
+      <button type="button" onClick={() => this.props.onCancelCarEdit(this.props.car.id)}>Cancel</button>
     </tr>;
   }
 }
