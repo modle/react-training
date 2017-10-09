@@ -26,17 +26,19 @@ export class CarRow extends React.Component {
     );
   };
 
+  cancel = () => {
+    const car = this.props.car;
+    car.edit = true;
+    this.props.onFlipEditFlag(car);    
+  }
+
   flipEditFlag = () => {
     const car = this.props.car;
-    car.edit = false;
+    car.edit = !car.edit;
     this.props.onFlipEditFlag(car);
   };
 
   save = () => {
-
-    console.log(this.props.car.id);
-    console.log(this.state);
-
     const car = {
       id: this.state.id,
       make: this.state.make,
