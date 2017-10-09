@@ -4,9 +4,7 @@ export class UnorderedList extends React.PureComponent {
 
   render() {
 
-    console.log('rendering unordered list');
-
-return <ul>
+    return <ul>
       {this.props.items.map(item =>
         <UnorderedListItem key={item.id} item={item} onDelete={this.props.onDelete} />
       )}
@@ -21,7 +19,6 @@ export class UnorderedListItem extends React.Component {
   }
 
   render() {
-    console.log('rendering unordered list item');
     return <li>{this.props.item.value} <button type="button" onClick={this.delete}>Delete</button></li>;
   }
 

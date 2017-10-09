@@ -14,6 +14,11 @@ export class CarTool extends React.Component {
       newYear: 0,
       newColor: '',
       newPrice: 0,
+      editMake: '',
+      editModel: '',
+      editYear: 0,
+      editColor: '',
+      editPrice: '',
     };
   }
 
@@ -29,10 +34,19 @@ export class CarTool extends React.Component {
     });
   }
 
-  editCar = carId => {
-    console.log("edit triggered");
+  flipEditCarFlag = carId => {
+    const carToFlagIndex = this.state.cars.findIndex(car => car.id === carId);
+    console.log('get the car and flip the edit flag');
+    console.log(this.state.cars[carToFlagIndex]);
+    // this.setState({
+    //   cars: this.state.cars[carToFlagIndex].edit = true;
+    // )};
   };
   
+  saveEditedCar = car => {
+    console.log('save the edited car');
+    console.log(car);
+  };
 
   deleteCar = carId => {
     console.log(carId.value);
@@ -48,7 +62,7 @@ export class CarTool extends React.Component {
 
     return <div>
       <ToolHeader headerText="Car Tool" />
-      <CarTable cars={this.state.cars} onDeleteCar={this.deleteCar} onEditCar={this.editCar} />
+      <CarTable cars={this.state.cars} onDeleteCar={this.deleteCar} onFlipEditFlag={this.flipEditCarFlag} onSaveEditedCar={this.saveEditedCar} />
       <br />
       <br />
       <CarForm cars={this.state.cars} onSaveCar={this.saveCar} />
