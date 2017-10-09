@@ -1,0 +1,11 @@
+Create an edit car row
+
+Add to the view car row an edit button. when the edit button is clicked, the view car changes to the edit car row for that particular row. Only one row may be edited at a time.
+
+The edit car row will display an input field for each column, pre-populated with the current value
+
+in the actions column of the edit car row, there will be two buttons. one to save and one to cancel
+
+if you click save, the car is saved to the array and the row changes to view mode
+
+if you click cancel, the car is not saved and the row changes to view mode.

@@ -1,12 +1,15 @@
 import * as React from 'react';
 
-export class UnorderedList extends React.Component {
-  render () {
+export class UnorderedList extends React.PureComponent {
 
-    return <ul>
-      {this.props.items.map(item => {
-        <UnorderedListItem key={item.id} item={item.value} onDelete={this.props.onDelete} />
-      })}
+  render() {
+
+    console.log('rendering unordered list');
+
+return <ul>
+      {this.props.items.map(item =>
+        <UnorderedListItem key={item.id} item={item} onDelete={this.props.onDelete} />
+      )}
     </ul>;
   }
 }
@@ -18,6 +21,8 @@ export class UnorderedListItem extends React.Component {
   }
 
   render() {
-    return <li>{this.props.item.value} <button type="button" onClick={this.delete}>Delete</button>;
+    console.log('rendering unordered list item');
+    return <li>{this.props.item.value} <button type="button" onClick={this.delete}>Delete</button></li>;
   }
+
 }

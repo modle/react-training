@@ -2,11 +2,15 @@ import * as React from 'react';
 
 export class CarRow extends React.Component {
 
-  onClick = () => {
+  delete = () => {
     console.log(this.props.car.id);
     this.props.onDeleteCar(
       this.props.car.id
     );
+  };
+
+  edit = () => {
+    console.log(this.props.car.id);
   };
 
   render() {
@@ -18,7 +22,8 @@ export class CarRow extends React.Component {
       <td>{car.year}</td>
       <td>{car.color}</td>
       <td>{car.price}</td>
-      <button type="button" onClick={this.onClick}>Delete car</button>
+      <button type="button" id="edit" onClick={this.edit}>Edit car</button>
+      <button type="button" id="delete" onClick={this.delete}>Delete car</button>
     </tr>;
   }
 }

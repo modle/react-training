@@ -7,4 +7,5 @@ export class ToolHeader extends React.Component {
       <h1>{this.props.headerText}</h1>
     </header>;
   }
+
 }

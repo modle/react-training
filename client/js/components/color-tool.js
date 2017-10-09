@@ -1,37 +1,61 @@
 import * as React from 'react';
+
 import { ToolHeader } from './tool-header';
+import { UnorderedList } from './unordered-list';
 import { ColorForm } from './color-form';
+
 
 export class ColorTool extends React.Component {
 
   constructor(props) {
     super(props);
-    // this state tracks colors array
+
     this.state = {
-      colors: props.colors.concat(),
-      newColorName: '',
-      newColorHexCode: '',
+      colors: props.colors.map(c => ({ id: c.id, value: c.name + ' ' + c.hexCode })),
     };
   }
 
-  // receives the color
   addNewColor = color => {
+
     const nextId = Math.max(...this.state.colors.map(c => c.id)) + 1;
+
     color.id = nextId;
 
     this.setState({
       colors: this.state.colors.concat(color),
     });
+  };
+
+  deleteColor = colorId => {
+
+    const colorToDeleteIndex = this.state.colors.findIndex(color => color.id === colorId);
+
+    //this.state.colors.splice(colorToDeleteIndex, 1);
+
+    this.setState({
+      colors: this.state.colors.slice(0, colorToDeleteIndex).concat(this.state.colors.slice(colorToDeleteIndex + 1)),
+//      colors: [ ...this.state.colors.slice(0, colorToDeleteIndex), ...this.state.colors.slice(colorToDeleteIndex + 1) ],
+        //colors: this.state.colors,
+    });
+
   }
 
-  // pass this.addNewColor to ColorForm
+  onChange = (e) => {
+    this.setState({
+      someValue: e.target.value,
+    });
+  }
+
   render() {
     return <div>
-      <ToolHeader headerText="Color Tool" />
-      <ul>
-        {this.state.colors.map(color => <li key={color.id}>{color.name + ': ' + color.hexCode}</li>)}
-      </ul>
+      <div>
+        <input type="text" value={this.someValue} onChange={this.onChange} />
+      </div>
+      <ToolHeader headerText="Color Tool!" />
+      <UnorderedList onDelete={this.deleteColor}
+        items={this.state.colors} />
       <ColorForm onSaveColor={this.addNewColor} />
     </div>;
   }
+
 }
