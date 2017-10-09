@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { ToolHeader } from './tool-header';
+import { CarTable } from './car-table';
 
 export class CarTool extends React.Component {
 
@@ -8,7 +10,9 @@ export class CarTool extends React.Component {
       cars: props.cars.concat(),
       newMake: '',
       newModel: '',
+      newYear: 0,
       newColor: '',
+      newPrice: 0,
     };
 
   }
@@ -25,7 +29,9 @@ export class CarTool extends React.Component {
       id: nextId,
       make: this.state.newCarMake,
       model: this.state.newCarModel,
+      year: this.state.newCarYear,
       color: this.state.newCarColor,
+      price: this.state.newCarPrice,
     };
 
     // add objects immutably; create a new array with concat
@@ -33,7 +39,9 @@ export class CarTool extends React.Component {
       cars: this.state.cars.concat(car),
       newCarMake: '',
       newCarModel: '',
+      newCarYear: 0,
       newCarColor: '',
+      newCarPrice: 0,
     });
   }
 
@@ -41,31 +49,8 @@ export class CarTool extends React.Component {
   render() {
 
     return <div>
-      <header>
-        <h1>Car Tool</h1>
-      </header>
-      <table border="1px">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Make</th>
-            <th>Model</th>
-            <th>Color</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            this.state.cars.map(
-              car => <tr key={car.id}>
-                <td>{car.id}</td>
-                <td>{car.make}</td>
-                <td>{car.model}</td>
-                <td>{car.color}</td>
-              </tr>
-            )
-          }
-        </tbody>
-      </table >
+      <ToolHeader headerText="Car Tool" />
+      <CarTable cars={this.state.cars} />
       <br />
       <br />
       <form>
@@ -80,9 +65,19 @@ export class CarTool extends React.Component {
             value={this.state.newCarModel} onChange={this.onChange} />
         </div >
         <div>
+          <label htmlFor="new-car-year-input">Year:</label>
+          <input type="number" id="new-car-year-input" name="newCarYear"
+            value={this.state.newCarYear} onChange={this.onChange} />
+        </div >
+        <div>
           <label htmlFor="new-car-color-input">Color:</label>
           <input type="text" id="new-car-color-input" name="newCarColor"
             value={this.state.newCarColor} onChange={this.onChange} />
+        </div >
+        <div>
+          <label htmlFor="new-car-price-input">Price:</label>
+          <input type="number" id="new-car-price-input" name="newCarPrice"
+            value={this.state.newCarPrice} onChange={this.onChange} />
         </div >
         <button type="button" onClick={this.onClick}>Add Car</button>
       </form>
