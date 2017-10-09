@@ -14,14 +14,16 @@ export class CarTable extends React.Component {
           <th>Year</th>
           <th>Color</th>
           <th>Price</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         {
           cars.map(
-            car => <CarRow key={car.id} car={car} />
+            car => <CarRow key={car.id} car={car} onDeleteCar={this.props.onDeleteCar} />
           )
         }
+        
       </tbody>
     </table>;
   }

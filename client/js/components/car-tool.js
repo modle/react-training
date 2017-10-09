@@ -25,6 +25,7 @@ export class CarTool extends React.Component {
 
   onClick = () => {
     const nextId = Math.max(...this.state.cars.map(c => c.id)) + 1;
+    console.log(nextId);
     const car = {
       id: nextId,
       make: this.state.newCarMake,
@@ -45,12 +46,24 @@ export class CarTool extends React.Component {
     });
   }
 
+  deleteCar = carId => {
+    console.log(carId.value);
+    // delete the car
+    const carToDeleteIndex = this.state.cars.findIndex(car => car.id === carId);
+    console.log(carToDeleteIndex);
+    this.setState({
+      cars: this.state.cars.slice(0, carToDeleteIndex).concat(this.state.cars.slice(carToDeleteIndex + 1)),
+    });
+  };
 
+  // cars: this.state.cars.slice(0, carToDeleteIndex).concat(this.state.cars.slice(carToDeleteIndex + 1)),
+  // cars: this.state.cars.filter(item => item.id !== carToDeleteIndex),
+  
   render() {
 
     return <div>
       <ToolHeader headerText="Car Tool" />
-      <CarTable cars={this.state.cars} />
+      <CarTable cars={this.state.cars} onDeleteCar={this.deleteCar}/>
       <br />
       <br />
       <form>
