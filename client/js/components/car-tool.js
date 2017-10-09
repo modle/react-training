@@ -25,13 +25,6 @@ export class CarTool extends React.Component {
     });
   };
 
-  saveCar = car => {
-    this.setState({
-      cars: this.state.cars.concat(car),
-      editCarId: -1,
-    });
-  }
-
   deleteCar = carId => {
     console.log(carId.value);
     const carToDeleteIndex = this.state.cars.findIndex(car => car.id === carId);
@@ -47,13 +40,17 @@ export class CarTool extends React.Component {
     });
   };
 
-  saveEditedCar = updateCar => {
-    const carToUpdateIndex = this.state.cars.findIndex(car => car.id === updateCar.id);
+  save = targetCar => {
+    let targetIndex = this.state.cars.findIndex(car => car.id === targetCar.id);
+    if (targetIndex === -1) {
+      targetIndex = targetCar.id;
+    }
+    
     this.setState({
       cars: [
-        ...this.state.cars.slice(0, carToUpdateIndex),
-        updateCar,
-        ...this.state.cars.slice(carToUpdateIndex + 1),
+        ...this.state.cars.slice(0, targetIndex),
+        targetCar,
+        ...this.state.cars.slice(targetIndex + 1),
       ],
       editCarId: -1,
     });
@@ -72,12 +69,12 @@ export class CarTool extends React.Component {
       <CarTable cars={this.state.cars}
         onDeleteCar={this.deleteCar}
         onEditCar={this.editCar}
-        onSaveEditedCar={this.saveEditedCar}
+        onSaveEditedCar={this.save}
         onCancelCarEdit={this.cancelCarEdit}
         editCarId = {this.state.editCarId} />
       <br />
       <br />
-      <CarForm cars={this.state.cars} onSaveCar={this.saveCar} />
+      <CarForm cars={this.state.cars} onSaveCar={this.save} />
     </div >;
   }
 }
