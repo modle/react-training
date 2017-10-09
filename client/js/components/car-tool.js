@@ -58,6 +58,7 @@ export class CarTool extends React.Component {
 
   render() {
 
+    console.log(this.state.cars);
     return <div>
       <ToolHeader headerText="Car Tool" />
       <CarTable cars={this.state.cars} onDeleteCar={this.deleteCar} onFlipEditFlag={this.flipEditCarFlag} onSaveEditedCar={this.saveEditedCar} />

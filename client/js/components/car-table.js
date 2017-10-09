@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { CarRow } from './car-row';
+import { CarViewRow } from './car-view-row';
+import { CarEditRow } from './car-edit-row';
 
 export class CarTable extends React.Component {
 
@@ -20,13 +21,20 @@ export class CarTable extends React.Component {
       <tbody>
         {
           cars.map(
-            car => <CarRow key={car.id} car={car}
-              onDeleteCar={this.props.onDeleteCar}
-              onFlipEditFlag={this.props.onFlipEditFlag}
-              onSaveEditedCar={this.props.onSaveEditedCar} />
+            car => 
+            {
+              if (car.edit) {
+                return <CarEditRow key={car.id} car={car}
+                  onFlipEditFlag={this.props.onFlipEditFlag}
+                  onSaveEditedCar={this.props.onSaveEditedCar} />;
+              } else {
+                return <CarViewRow key={car.id} car={car}
+                  onDeleteCar={this.props.onDeleteCar}
+                  onFlipEditFlag={this.props.onFlipEditFlag} />;
+              }
+            }
           )
-        }
-        
+        }        
       </tbody>
     </table>;
   }
