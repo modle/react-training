@@ -6,12 +6,14 @@ export class CarRow extends React.Component {
   constructor(props) {
     super(props);
 
+    const car = this.props.car;
+
     this.state = {
-      make: '',
-      model: '',
-      year: 0,
-      color: '',
-      price: 0,
+      make: car.make,
+      model: car.model,
+      year: car.year,
+      color: car.color,
+      price: car.price,
     };
 
   }
@@ -52,7 +54,7 @@ export class CarRow extends React.Component {
       [ e.target.name ]: e.target.value,
     });
   }
-    
+
   render() {
     const car = this.props.car;
 
@@ -60,23 +62,23 @@ export class CarRow extends React.Component {
       return <tr>
         <td>{car.id}</td>
         <td>
-          <input type="text" id="edit-car-make-input" name="make"
+          <input type="text" id="edit-car-make-input" name="make" value={this.state.make}
             defaultValue={car.make} onChange={this.onChange} />
         </td>
         <td>
-          <input type="text" id="edit-car-model-input" name="model"
+          <input type="text" id="edit-car-model-input" name="model" value={this.state.model}
             defaultValue={car.model} onChange={this.onChange} />
         </td>
         <td>
-          <input type="number" id="edit-car-year-input" name="year"
+          <input type="number" id="edit-car-year-input" name="year" value={this.state.year}
             defaultValue={car.year} onChange={this.onChange} />
         </td>
         <td>
-          <input type="text" id="edit-car-color-input" name="color"
+          <input type="text" id="edit-car-color-input" name="color" value={this.state.color}
             defaultValue={car.color} onChange={this.onChange} />
         </td>
         <td>
-          <input type="number" id="edit-car-price-input" name="price"
+          <input type="number" id="edit-car-price-input" name="price" value={this.state.price}
             defaultValue={car.price} onChange={this.onChange} />
         </td>
         <button type="button" id="save" onClick={this.save}>Save</button>
