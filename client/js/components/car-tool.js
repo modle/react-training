@@ -34,25 +34,34 @@ export class CarTool extends React.Component {
     });
   }
 
-  flipEditCarFlag = carId => {
-    const carToFlagIndex = this.state.cars.findIndex(car => car.id === carId);
+  flipEditCarFlag = updateCar => {
     console.log('get the car and flip the edit flag');
-    console.log(this.state.cars[carToFlagIndex]);
-    // this.setState({
-    //   cars: this.state.cars[carToFlagIndex].edit = true;
-    // )};
+    const carToUpdateIndex = this.state.cars.findIndex(car => car.id === updateCar.id);
+    console.log(carToUpdateIndex);
+    this.setState({
+      cars: [
+        ...this.state.cars.slice(0, carToUpdateIndex),
+        updateCar,
+        ...this.state.cars.slice(carToUpdateIndex + 1),
+      ]
+    });
   };
-  
-  saveEditedCar = car => {
-    console.log('save the edited car');
-    console.log(car);
+
+  saveEditedCar = updateCar => {
+    const carToUpdateIndex = this.state.cars.findIndex(car => car.id === updateCar.id);
+    this.setState({
+      cars: [
+        ...this.state.cars.slice(0, carToUpdateIndex),
+        updateCar,
+        ...this.state.cars.slice(carToUpdateIndex + 1),
+      ]
+    });
   };
 
   deleteCar = carId => {
     console.log(carId.value);
     // delete the car
     const carToDeleteIndex = this.state.cars.findIndex(car => car.id === carId);
-    console.log(carToDeleteIndex);
     this.setState({
       cars: this.state.cars.slice(0, carToDeleteIndex).concat(this.state.cars.slice(carToDeleteIndex + 1)),
     });
