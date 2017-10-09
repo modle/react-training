@@ -1,19 +1,12 @@
 import * as React from 'react';
 
-export class CarViewRow extends React.Component {
-
-  render() {
-    const car = this.props.car;
-
-    return <tr>
-      <td>{car.id}</td>
-      <td>{car.make}</td>
-      <td>{car.model}</td>
-      <td>{car.year}</td>
-      <td>{car.color}</td>
-      <td>{car.price}</td>
-      <button type="button" id="edit" onClick={() => this.props.onEditCar(this.props.car.id)}>Edit car</button>
-      <button type="button" id="edit" onClick={() => this.props.onDeleteCar(this.props.car.id)}>Delete car</button>
-    </tr>;
-  }
-}
+export const CarViewRow = props =><tr>
+  <td>{props.car.id}</td>
+  <td>{props.car.make}</td>
+  <td>{props.car.model}</td>
+  <td>{props.car.year}</td>
+  <td>{props.car.color}</td>
+  <td>{props.car.price}</td>
+  <button type="button" id="edit" onClick={() => props.onEditCar(props.car.id)}>Edit car</button>
+  <button type="button" id="edit" onClick={() => props.onDeleteCar(props.car.id)}>Delete car</button>
+</tr>;
