@@ -1,0 +1,8 @@
+1. Add an "Actions" column to the car table
+
+2. on each row in the "Actions" column, please add a "Delete" button
+
+3. When the button is clicked, delete the car from the array of cars,
+ and re-render the table
+
+4. To delete an item from an array use a combination of slice and concat
