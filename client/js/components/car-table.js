@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { CarViewRow } from './car-view-row';
 import { CarEditRow } from './car-edit-row';
+import { CarForm } from './car-form';
 
 export class CarTable extends React.Component {
 
@@ -40,6 +41,7 @@ export class CarTable extends React.Component {
           <th onClick={() => this.props.onSort('year')}>Year</th>
           <th onClick={() => this.props.onSort('color')}>Color</th>
           <th onClick={() => this.props.onSort('price')}>Price</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -52,6 +54,7 @@ export class CarTable extends React.Component {
             }
           )
         }
+        <CarForm cars={this.props.cars} onSaveCar={this.props.onSaveCar} />
       </tbody>
     </table>;
   }

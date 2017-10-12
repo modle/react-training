@@ -46,33 +46,29 @@ export class CarForm extends React.Component {
 
   render() {
 
-    return <form>
-      <div>
-        <label htmlFor="new-car-make-input">Make:</label>
+    return <tr>
+      <td></td>
+      <td>
         <input type="text" id="new-car-make-input" name="newCarMake"
           value={this.state.newCarMake} onChange={this.onChange} />
-      </div >
-      <div>
-        <label htmlFor="new-car-model-input">Model:</label>
+      </td>
+      <td>
         <input type="text" id="new-car-model-input" name="newCarModel"
           value={this.state.newCarModel} onChange={this.onChange} />
-      </div >
-      <div>
-        <label htmlFor="new-car-year-input">Year:</label>
+      </td>
+      <td>
         <input type="number" id="new-car-year-input" name="newCarYear"
           value={this.state.newCarYear} onChange={this.onChange} />
-      </div >
-      <div>
-        <label htmlFor="new-car-color-input">Color:</label>
+      </td>
+      <td>
         <input type="text" id="new-car-color-input" name="newCarColor"
           value={this.state.newCarColor} onChange={this.onChange} />
-      </div >
-      <div>
-        <label htmlFor="new-car-price-input">Price:</label>
+      </td>
+      <td>
         <input type="number" id="new-car-price-input" name="newCarPrice"
           value={this.state.newCarPrice} onChange={this.onChange} />
-      </div >
-      <button type="button" onClick={this.save}>Add Car</button>
-    </form>;
+      </td>
+      <td><button type="button" onClick={this.save}>Add Car</button></td>
+    </tr>;
   }
 }

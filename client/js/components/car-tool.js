@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { ToolHeader } from './tool-header';
 import { CarTable } from './car-table';
-import { CarForm } from './car-form';
+// import { CarForm } from './car-form';
 
 export class CarTool extends React.Component {
 
@@ -84,10 +84,9 @@ export class CarTool extends React.Component {
         editCarId={this.state.editCarId}
         onSort={this.sort}
         sortField={this.state.sortField}
-        sortAscending={this.state.sortAscending} />
-      <br />
-      <br />
-      <CarForm cars={this.state.cars} onSaveCar={this.save} />
+        sortAscending={this.state.sortAscending}
+        onSaveCar={this.save} />
+      {/* <CarForm cars={this.state.cars} onSaveCar={this.save} /> */}
     </div >;
   }
 }
