@@ -15,6 +15,5 @@ const myColors = [
   { id: 3, name: 'blue', hexCode: '#ff0000' }
 ];
 
-
 ReactDOM.render(<CarTool cars={myCars} />, document.querySelector('lab'));
 ReactDOM.render(<ColorTool colors={myColors} />, document.querySelector('main'));

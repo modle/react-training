@@ -1,3 +1,4 @@
+/* eslint react/prop-types: 0 */
 import * as React from 'react';
 import { ToolHeader } from './tool-header';
 import { CarTable } from './car-table';
@@ -15,6 +16,8 @@ export class CarTool extends React.Component {
       newColor: '',
       newPrice: 0,
       editCarId: -1,
+      sortField: '',
+      sortAscending: true,
     };
   }
 
@@ -26,7 +29,6 @@ export class CarTool extends React.Component {
   };
 
   deleteCar = carId => {
-    console.log(carId.value);
     const carToDeleteIndex = this.state.cars.findIndex(car => car.id === carId);
     this.setState({
       cars: this.state.cars.slice(0, carToDeleteIndex).concat(this.state.cars.slice(carToDeleteIndex + 1)),
@@ -62,8 +64,16 @@ export class CarTool extends React.Component {
     });
   };
 
-  render() {
+  sort = sortField => {
+    let sortAscending = this.state.sortAscending;
+    sortAscending = (this.state.sortField === sortField ? !sortAscending : true);
+    this.setState({
+      sortField: sortField,
+      sortAscending: sortAscending,
+    });
+  }
 
+  render() {
     return <div>
       <ToolHeader headerText="Car Tool" />
       <CarTable cars={this.state.cars}
@@ -71,7 +81,10 @@ export class CarTool extends React.Component {
         onEditCar={this.editCar}
         onSaveEditedCar={this.save}
         onCancelCarEdit={this.cancelCarEdit}
-        editCarId = {this.state.editCarId} />
+        editCarId={this.state.editCarId}
+        onSort={this.sort}
+        sortField={this.state.sortField}
+        sortAscending={this.state.sortAscending} />
       <br />
       <br />
       <CarForm cars={this.state.cars} onSaveCar={this.save} />
