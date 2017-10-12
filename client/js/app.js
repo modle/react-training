@@ -4,6 +4,8 @@ import * as ReactDOM from 'react-dom';
 import { CarTool } from './components/car-tool';
 import { ColorTool } from './components/color-tool';
 
+const carFields = ['id', 'make', 'model', 'year', 'color', 'price'];
+
 const myCars = [
   { id: 1, make: 'Chevy', model: 'Cavalier', year: 1981, color: 'brown', price: 300},
   { id: 2, make: 'Lincoln', model: 'Futura', year: 1955, color: 'black', price: 999999}
@@ -15,5 +17,5 @@ const myColors = [
   { id: 3, name: 'blue', hexCode: '#ff0000' }
 ];
 
-ReactDOM.render(<CarTool cars={myCars} />, document.querySelector('lab'));
+ReactDOM.render(<CarTool cars={myCars} carFields={carFields}/>, document.querySelector('lab'));
 ReactDOM.render(<ColorTool colors={myColors} />, document.querySelector('main'));

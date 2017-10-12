@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { ToolHeader } from './tool-header';
 import { CarTable } from './car-table';
-// import { CarForm } from './car-form';
+import { CarFilter } from './car-filter';
 
 export class CarTool extends React.Component {
 
@@ -10,6 +10,7 @@ export class CarTool extends React.Component {
     super(props);
     this.state = {
       cars: props.cars.concat(),
+      fields: props.carFields.concat(),
       newMake: '',
       newModel: '',
       newYear: 0,
@@ -18,6 +19,7 @@ export class CarTool extends React.Component {
       editCarId: -1,
       sortField: '',
       sortAscending: true,
+      filter: 'default filter',
     };
   }
 
@@ -76,6 +78,7 @@ export class CarTool extends React.Component {
   render() {
     return <div>
       <ToolHeader headerText="Car Tool" />
+      <CarFilter filter={this.state.filter} fields={this.state.fields} />
       <CarTable cars={this.state.cars}
         onDeleteCar={this.deleteCar}
         onEditCar={this.editCar}
@@ -86,7 +89,6 @@ export class CarTool extends React.Component {
         sortField={this.state.sortField}
         sortAscending={this.state.sortAscending}
         onSaveCar={this.save} />
-      {/* <CarForm cars={this.state.cars} onSaveCar={this.save} /> */}
     </div >;
   }
 }
