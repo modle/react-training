@@ -89,7 +89,7 @@
     "key-mirror": "1.0.1",
     "mobx": "3.3.0",
     "mobx-react": "4.3.3",
-    "node-fetch": "1.7.3",
+    "node-fetch": "2.6.1",
     "node-sass": "4.5.3",
     "null-loader": "0.1.1",
     "pluralize": "7.0.0",
